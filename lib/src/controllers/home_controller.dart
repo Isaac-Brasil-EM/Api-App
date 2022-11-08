@@ -8,17 +8,17 @@ class HomeController {
   List<AlunoModel> alunos = [];
 
   final TodoRepository _todoRepository;
-  // final AlunoRepository _alunoRepository;
+  final AlunoRepository _alunoRepository;
 
-  // HomeController({todoRepository, alunoRepository})
-  //     : _todoRepository = todoRepository ?? TodoRepository(),
-  //       _alunoRepository = alunoRepository ?? AlunoRepository();
+  HomeController({todoRepository, alunoRepository})
+      : _todoRepository = todoRepository ?? TodoRepository(),
+        _alunoRepository = alunoRepository ?? AlunoRepository();
 
-  HomeController({todoRepository})
-      : _todoRepository = todoRepository ?? TodoRepository();
+  // HomeController({required TodoRepository? todoRepository})
+  //     : _todoRepository = todoRepository ?? TodoRepository();
 
   Future start() async {
     todos = await _todoRepository.fetchTodos();
-    // alunos = await _alunoRepository.fetchAlunos();
+    alunos = await _alunoRepository.fetchAlunos();
   }
 }

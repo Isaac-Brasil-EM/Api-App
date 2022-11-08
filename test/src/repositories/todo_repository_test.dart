@@ -1,9 +1,8 @@
-//@dart=2.9
 import 'dart:convert';
 import 'package:api_fetch/src/repositories/todo_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements Dio {}
 
@@ -12,10 +11,8 @@ main() {
   final repository = TodoRepository(dio);
 
   test('Deve trazer uma lista de TodoModel', () async {
-    when(dio.get('https://jsonplaceholder.typicode.com/todos')).thenAnswer(
-        (_) async => Response(
-            requestOptions: RequestOptions(path: '/'),
-            data: jsonDecode(jsonData)));
+    when(() => dio.get(any())).thenAnswer((_) async => Response(
+        requestOptions: RequestOptions(path: '/'), data: jsonDecode(jsonData)));
 
     final list = await repository.fetchTodos();
     expect(list[1].title, 'quis ut nam facilis et officia qui');

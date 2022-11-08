@@ -1,9 +1,8 @@
-//@dart=2.9
 import 'dart:convert';
 import 'package:api_fetch/src/repositories/aluno_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements Dio {}
 
@@ -12,10 +11,8 @@ main() {
   final repository = AlunoRepository(dio);
 
   test('Deve trazer uma lista de AlunoModel', () async {
-    when(dio.get('https://localhost:7223/api/Aluno')).thenAnswer((_) async =>
-        Response(
-            requestOptions: RequestOptions(path: '/'),
-            data: jsonDecode(jsonData)));
+    when(() => dio.get(any())).thenAnswer((_) async => Response(
+        requestOptions: RequestOptions(path: '/'), data: jsonDecode(jsonData)));
     final list = await repository.fetchAlunos();
     expect(list[1].nome, 'Isaac 102');
   });
