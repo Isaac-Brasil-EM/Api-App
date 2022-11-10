@@ -16,12 +16,12 @@ class AlunoModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['matricula'] = this.matricula;
-    data['nome'] = this.nome;
-    data['cpf'] = this.cpf;
-    data['nascimento'] = this.nascimento;
-    data['sexo'] = this.sexo;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['matricula'] = matricula;
+    data['nome'] = nome;
+    data['cpf'] = cpf;
+    data['nascimento'] = nascimento;
+    data['sexo'] = sexo;
     return data;
   }
 }

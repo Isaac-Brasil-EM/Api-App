@@ -17,7 +17,7 @@ main() {
     expect(controller.state.value, HomeState.start);
     await controller.start();
     expect(controller.state.value, HomeState.success);
-    expect(controller.todos.isNotEmpty, true);
+    expect(controller.alunos.isNotEmpty, true);
   });
   test('Deve modificar o estado para erro se a requisição falhar', () async {
     when(() => alunoRepository.fetchAlunos()).thenThrow(Exception());
