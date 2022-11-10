@@ -1,8 +1,10 @@
 import 'package:api_fetch/src/controllers/home_controller.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,8 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
-
   _success() {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.yMd().format(now);
+    late DateTime dataNascimento = DateTime.now();
+    print(UtilData.obterDataDDMMAAAA(dataNascimento));
+    print(controller.alunos[1].cpf.runtimeType);
     return RefreshIndicator(
         onRefresh: () {
           return controller.start();
@@ -36,11 +42,13 @@ class _HomePageState extends State<HomePage> {
                           Text(controller.alunos[index].matricula.toString()),
                     ),
                   ),
-                  title: Text(
-                    controller.alunos[index].nome,
-                  ),
+                  title: Text(controller.alunos[index].nome +
+                      " - " +
+                      UtilBrasilFields.obterCpf(controller.alunos[index].cpf)),
                   subtitle: Text(
-                    controller.alunos[index].cpf,
+                    UtilData.obterDataDDMMAAAA(
+                            controller.alunos[index].nascimento)
+                        .toString(),
                     style: const TextStyle(
                       fontWeight: FontWeight.w300,
                     ),

@@ -57,7 +57,7 @@ class DetailsView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                controller.alunos[index].nascimento,
+                controller.alunos[index].nascimento.toString(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.grey,

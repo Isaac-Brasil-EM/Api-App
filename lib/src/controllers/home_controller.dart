@@ -1,10 +1,8 @@
-import 'package:api_fetch/src/models/todo_model.dart';
 import 'package:api_fetch/src/repositories/aluno_repository.dart';
 import 'package:flutter/cupertino.dart';
 import '../models/aluno_model.dart';
 
 class HomeController {
-  List<TodoModel> todos = [];
   List<AlunoModel> alunos = [];
 
   final AlunoRepository _alunoRepository;

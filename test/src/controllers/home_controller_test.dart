@@ -1,6 +1,5 @@
 import 'package:api_fetch/src/controllers/home_controller.dart';
 import 'package:api_fetch/src/models/aluno_model.dart';
-import 'package:api_fetch/src/models/todo_model.dart';
 import 'package:api_fetch/src/repositories/aluno_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
