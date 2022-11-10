@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:api_fetch/src/models/aluno_model.dart';
+import 'package:api_fetch/src/models/todo_model.dart';
 import 'package:dio/dio.dart';
 
 class AlunoRepository {
@@ -12,7 +13,7 @@ class AlunoRepository {
   }
 
   Future<List<AlunoModel>> fetchAlunos() async {
-    final response = await dio.get(url2);
+    final response = await dio.get(url);
     final list = response.data as List;
 
     return list.map((json) => AlunoModel.fromJson(json)).toList();
