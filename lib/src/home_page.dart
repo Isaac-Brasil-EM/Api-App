@@ -13,38 +13,43 @@ class _HomePageState extends State<HomePage> {
   final controller = HomeController();
 
   _success() {
-    return ScrollablePositionedList.builder(
-      physics: const BouncingScrollPhysics(),
-      itemCount: controller.alunos.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          child: Card(
-            child: ListTile(
-              leading: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey[400],
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                child: Center(
-                  child: Text(controller.alunos[index].matricula.toString()),
+    return RefreshIndicator(
+        onRefresh: () {
+          return controller.start();
+        },
+        child: ScrollablePositionedList.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: controller.alunos.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              child: Card(
+                child: ListTile(
+                  leading: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[400],
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: Center(
+                      child:
+                          Text(controller.alunos[index].matricula.toString()),
+                    ),
+                  ),
+                  title: Text(
+                    controller.alunos[index].nome,
+                  ),
+                  subtitle: Text(
+                    controller.alunos[index].cpf,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                 ),
               ),
-              title: Text(
-                controller.alunos[index].nome,
-              ),
-              subtitle: Text(
-                controller.alunos[index].nascimento.toString(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+            );
+          },
+        ));
   }
 
   _error() {
@@ -95,11 +100,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Alunos'),
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         controller.start();
+          //       },
+          //       icon: Icon(Icons.refresh_sharp))
+          // ],
         ),
         body: AnimatedBuilder(
             animation: controller.state,
             builder: (context, child) {
-              return _success();
+              return stateManagement(controller.state.value);
             }));
   }
 }
