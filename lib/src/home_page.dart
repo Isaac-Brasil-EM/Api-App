@@ -2,7 +2,6 @@ import 'package:api_fetch/src/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   _success() {
     return ScrollablePositionedList.builder(
       physics: const BouncingScrollPhysics(),
-      itemCount: controller.todos.length,
+      itemCount: controller.alunos.length,
       itemBuilder: (context, index) {
         return InkWell(
           child: Card(
@@ -29,14 +28,14 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(7),
                 ),
                 child: Center(
-                  child: Text(controller.todos[index].id.toString()),
+                  child: Text(controller.alunos[index].matricula.toString()),
                 ),
               ),
               title: Text(
-                controller.todos[index].title,
+                controller.alunos[index].nome,
               ),
               subtitle: Text(
-                controller.todos[index].completed.toString(),
+                controller.alunos[index].nascimento.toString(),
                 style: const TextStyle(
                   fontWeight: FontWeight.w300,
                 ),

@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 class AlunoRepository {
   late Dio dio;
-  final String url = 'https://192.168.1.219:443/api/aluno';
+  final String url = 'https://192.168.1.219:448/api/aluno/';
   final String url2 = 'https://jsonplaceholder.typicode.com/todos';
 
   AlunoRepository([Dio? client]) {

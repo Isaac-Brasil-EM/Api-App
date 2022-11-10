@@ -8,8 +8,8 @@ class HomeController {
   List<TodoModel> todos = [];
   List<AlunoModel> alunos = [];
 
-  final TodoRepository _todoRepository;
-  // final AlunoRepository _alunoRepository;
+  //final TodoRepository _todoRepository;
+  final AlunoRepository _alunoRepository;
 
   final state = ValueNotifier<HomeState>(HomeState.start);
 
@@ -17,17 +17,17 @@ class HomeController {
   //     : _todoRepository = todoRepository ?? TodoRepository(),
   //       _alunoRepository = alunoRepository ?? AlunoRepository();
 
-  // HomeController({alunoRepository})
-  //     : _alunoRepository = alunoRepository ?? AlunoRepository();
+  HomeController({alunoRepository})
+      : _alunoRepository = alunoRepository ?? AlunoRepository();
 
-  HomeController({todoRepository})
-      : _todoRepository = todoRepository ?? TodoRepository();
+  // HomeController({todoRepository})
+  //     : _todoRepository = todoRepository ?? TodoRepository();
 
   Future start() async {
     state.value = HomeState.loading;
     try {
-      todos = await _todoRepository.fetchTodos();
-      //alunos = await _alunoRepository.fetchAlunos();
+      //todos = await _todoRepository.fetchTodos();
+      alunos = await _alunoRepository.fetchAlunos();
       state.value = HomeState.success;
     } catch (e) {
       state.value = HomeState.error;
