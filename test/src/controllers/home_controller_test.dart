@@ -16,13 +16,13 @@ main() {
         .thenAnswer((_) async => [AlunoModel()]);
     expect(controller.state.value, HomeState.start);
     await controller.start();
-    expect(controller.state.value, HomeState.success);
     expect(controller.alunos.isNotEmpty, true);
+    expect(controller.state.value, HomeState.success);
   });
   test('Deve modificar o estado para erro se a requisição falhar', () async {
+    expect(controller.state.value, HomeState.start);
     when(() => alunoRepository.fetchAlunos()).thenThrow(Exception());
     await controller.start();
-    expect(controller.state.value, HomeState.success);
-    // expect(controller.state.value, HomeState.error);
+    expect(controller.state.value, HomeState.error);
   });
 }

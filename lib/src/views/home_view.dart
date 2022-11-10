@@ -100,13 +100,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Alunos'),
-          // actions: [
-          //   IconButton(
-          //       onPressed: () {
-          //         controller.start();
-          //       },
-          //       icon: Icon(Icons.refresh_sharp))
-          // ],
         ),
         body: AnimatedBuilder(
             animation: controller.state,
