@@ -1,11 +1,11 @@
 class AlunoModel {
-  int? matricula;
-  String? nome;
-  String? cpf;
-  String? nascimento;
-  int? sexo;
+  late int matricula;
+  late String nome;
+  late String cpf;
+  late String nascimento;
+  late int sexo;
 
-  AlunoModel({this.matricula, this.nome, this.cpf, this.nascimento, this.sexo});
+  AlunoModel({matricula, nome, cpf, nascimento, sexo});
 
   AlunoModel.fromJson(Map<String, dynamic> json) {
     matricula = json['matricula'];
