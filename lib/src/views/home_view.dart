@@ -42,15 +42,18 @@ class _HomePageState extends State<HomePage> {
                           Text(controller.alunos[index].matricula.toString()),
                     ),
                   ),
-                  title: Text(controller.alunos[index].nome +
-                      " - " +
-                      UtilBrasilFields.obterCpf(controller.alunos[index].cpf)),
+                  title: Text(
+                      "${controller.alunos[index].nome} : ${controller.alunos[index].cpf.replaceAll(RegExp(r'(\d{3})'), '.')}",
+                      style: const TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w400,
+                      )),
                   subtitle: Text(
                     UtilData.obterDataDDMMAAAA(
                             controller.alunos[index].nascimento)
                         .toString(),
                     style: const TextStyle(
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
