@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 class AlunoRepository {
   late Dio dio;
-  final String url = 'https://192.168.1.219:448/api/aluno/';
+  final String url = 'https://192.168.1.105:448/api/aluno/';
 
   AlunoRepository([Dio? client]) {
     dio = client ?? Dio();
