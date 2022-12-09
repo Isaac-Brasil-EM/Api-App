@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   title: Text(
-                      "${controller.alunos[index].nome} : ${controller.alunos[index].cpf}",
+                      "${controller.alunos[index].nome} : ${UtilBrasilFields.obterCpf(controller.alunos[index].cpf)}",
                       style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w400,
