@@ -57,10 +57,9 @@ class _HomePageState extends State<HomePage> {
                   trailing: Container(
                       child: (() {
                     if (controller.alunos[index].sexo == 0) {
-                      return Icon(Icons.male,
-                          color: Color.fromARGB(255, 0, 92, 167));
+                      return Icon(Icons.male, color: Colors.blueAccent);
                     } else {
-                      return Icon(Icons.female, color: Colors.blueAccent);
+                      return Icon(Icons.female, color: Colors.pink);
                     }
                   }())),
                 ),
