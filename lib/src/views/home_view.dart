@@ -17,8 +17,6 @@ class _HomePageState extends State<HomePage> {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat.yMd().format(now);
     late DateTime dataNascimento = DateTime.now();
-    print(UtilData.obterDataDDMMAAAA(dataNascimento));
-    print(controller.alunos[1].cpf.runtimeType);
     return RefreshIndicator(
         onRefresh: () {
           return controller.start();
