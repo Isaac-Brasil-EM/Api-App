@@ -54,6 +54,15 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
+                  trailing: Container(
+                      child: (() {
+                    if (controller.alunos[index].sexo == 0) {
+                      return Icon(Icons.male,
+                          color: Color.fromARGB(255, 0, 92, 167));
+                    } else {
+                      return Icon(Icons.female, color: Colors.blueAccent);
+                    }
+                  }())),
                 ),
               ),
             );
